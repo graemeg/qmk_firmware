@@ -8,7 +8,7 @@
 
 /*
   Author: Graeme Geldenhuys <graeme@geldenhuys.co.uk>
-  Ver 1.1
+  Ver 1.2
   Based on the default Dvorak keymap (2016-08-16), and applied some
   tweaks from the TypeMatrix 2030 design. These are the changes:
   
@@ -35,13 +35,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------| Hyper|           | Enter|------+------+------+------+------+--------|
  * | LShift |:/Ctrl|   Q  |   J  |   K  |   X  |      |           |      |   B  |   M  |   W  |   V  |Z/Ctrl| RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |Grv/L1| C+F9 |AltShf| Left | Right|                                       |  Up  | Down |   [  |   ]  | ~L1  |
+ *   |Grv/L2| C+F9 |AltShf| Left | Right|                                       |  Up  | Down |   [  |   ]  | ~L1  |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,---------------.
  *                                        | App  | PScr |       | Alt  |Ctrl/Esc|
  *                                 ,------|------|------|       |------+--------+------.
  *                                 |      |      | Home |       | PgUp |        |      |
- *                                 | L1   |Bksp  |------|       |------|  Meh   | Space|
+ *                                 |Space | L1   |------|       |------|  Meh   | Space|
  *                                 |      |      | End  |       | PgDn |        |      |
  *                                 `--------------------'       `----------------------'
  */
@@ -53,10 +53,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_DELT,        KC_QUOT,        KC_COMM, KC_DOT, KC_P,   KC_Y,   TG(1),
         KC_TAB,         KC_A,           KC_O,    KC_E,   KC_U,   KC_I,
         KC_LSFT,        CTL_T(KC_SCLN), KC_Q,    KC_J,   KC_K,   KC_X,   ALL_T(KC_NO),
-         LT(SYMB,KC_GRV), COMPI, LALT(KC_LSFT), KC_LEFT, KC_RGHT,
+         LT(MDIA,KC_GRV), COMPI, LALT(KC_LSFT), KC_LEFT, KC_RGHT,
                                               ALT_T(KC_APP),  KC_PSCR,
                                                               KC_HOME,
-                                               TG(1), KC_BSPC,KC_END,
+                                               KC_SPC, TG(1), KC_END,
         // right hand
              PASTE,     KC_6,   KC_7,   KC_8,   KC_9,   KC_0,             KC_BSLS,
              KC_BSPC,   KC_F,   KC_G,   KC_C,   KC_R,   KC_L,             KC_SLSH,
@@ -112,40 +112,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 2: Media and mouse keys
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * | Teensy |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      | MsUp |      |      |      |           |      |      |      |      |      |      |        |
+ * |        |      |      | MsUp |      |      |      |           | PScr |      |  Ins | Home | PgUp |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |MsLeft|MsDown|MsRght|      |------|           |------|      |      |      |      |      |  Play  |
+ * |        |      |MsLeft|MsDown|MsRght|      |------|           |------|      |  Del | End  | PgDn |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      | Prev | Next |      |        |
+ * |        |      |      |      |      |      |      |           |      |      |      |  Up  |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |Teensy|      |      | Lclk | Rclk |                                       |VolUp |VolDn | Mute |      |      |
+ *   |      |      |      | Lclk | Rclk |                                       | Left | Down | Right|      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |      |       |      |      |Brwser|
- *                                 |      |      |------|       |------|      |Back  |
+ *                                 | Lclk | Rclk |------|       |------|      |Back  |
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
 // MEDIA AND MOUSE
 KEYMAP(
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+       RESET, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       RESET  , KC_TRNS, KC_TRNS, KC_BTN1, KC_BTN2,
+       KC_TRNS  , KC_TRNS, KC_TRNS, KC_BTN1, KC_BTN2,
                                            KC_TRNS, KC_TRNS,
                                                     KC_TRNS,
-                                  KC_TRNS, KC_TRNS, KC_TRNS,
+                                  KC_BTN1, KC_BTN2, KC_TRNS,
     // right hand
        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MPLY,
-       KC_TRNS,  KC_TRNS, KC_TRNS, KC_MPRV, KC_MNXT, KC_TRNS, KC_TRNS,
-                          KC_VOLU, KC_VOLD, KC_MUTE, KC_TRNS, KC_TRNS,
+       KC_PSCR,  KC_TRNS, KC_INS,  KC_HOME, KC_PGUP, KC_TRNS, KC_TRNS,
+                 KC_TRNS, KC_DEL,  KC_END,  KC_PGDN, KC_TRNS, KC_TRNS,
+       KC_TRNS,  KC_TRNS, KC_TRNS, KC_UP  , KC_TRNS, KC_TRNS, KC_TRNS,
+                          KC_LEFT, KC_DOWN, KC_RIGHT, KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS,
        KC_TRNS,
        KC_TRNS, KC_TRNS, KC_WBAK
