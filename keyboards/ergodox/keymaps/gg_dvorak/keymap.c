@@ -8,7 +8,7 @@
 
 /*
   Author: Graeme Geldenhuys <graeme@geldenhuys.co.uk>
-  Ver 1.2
+  Ver 1.3
   Based on the default Dvorak keymap (2016-08-16), and applied some
   tweaks from the TypeMatrix 2030 design. These are the changes:
   
@@ -32,16 +32,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | Del    |   '  |   ,  |   .  |   P  |   Y  |  L1  |           | BkSp |   F  |   G  |   C  |   R  |   L  |   /    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | Tab    |   A  |   O  |   E  |   U  |   I  |------|           |------|   D  |   H  |   T  |   N  |S / L2|   -    |
- * |--------+------+------+------+------+------| Hyper|           | Enter|------+------+------+------+------+--------|
+ * |--------+------+------+------+------+------| C+F9 |           | Enter|------+------+------+------+------+--------|
  * | LShift |:/Ctrl|   Q  |   J  |   K  |   X  |      |           |      |   B  |   M  |   W  |   V  |Z/Ctrl| RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |Grv/L2| C+F9 |AltShf| Left | Right|                                       |  Up  | Down |   [  |   ]  | ~L1  |
+ *   |Grv/L2| Ins  |AltShf| Left | Right|                                       |  Up  | Down |   [  |   ]  | ~L1  |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,---------------.
  *                                        | App  | PScr |       | Alt  |Ctrl/Esc|
  *                                 ,------|------|------|       |------+--------+------.
  *                                 |      |      | Home |       | PgUp |        |      |
- *                                 |Space | L1   |------|       |------|  Meh   | Space|
+ *                                 |Space | L1   |------|       |------|  MEH   | Space|
  *                                 |      |      | End  |       | PgDn |        |      |
  *                                 `--------------------'       `----------------------'
  */
@@ -52,8 +52,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_EQL,         KC_1,           KC_2,    KC_3,   KC_4,   KC_5,   COPY,
         KC_DELT,        KC_QUOT,        KC_COMM, KC_DOT, KC_P,   KC_Y,   TG(1),
         KC_TAB,         KC_A,           KC_O,    KC_E,   KC_U,   KC_I,
-        KC_LSFT,        CTL_T(KC_SCLN), KC_Q,    KC_J,   KC_K,   KC_X,   ALL_T(KC_NO),
-         LT(MDIA,KC_GRV), COMPI, LALT(KC_LSFT), KC_LEFT, KC_RGHT,
+        KC_LSFT,        CTL_T(KC_SCLN), KC_Q,    KC_J,   KC_K,   KC_X,   COMPI,
+         LT(MDIA,KC_GRV), KC_INS, LALT(KC_LSFT), KC_LEFT, KC_RGHT,
                                               ALT_T(KC_APP),  KC_PSCR,
                                                               KC_HOME,
                                                KC_SPC, TG(1), KC_END,
@@ -63,9 +63,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                         KC_D,   KC_H,   KC_T,   KC_N,   LT(MDIA, KC_S),   KC_MINS,
              KC_ENT,    KC_B,   KC_M,   KC_W,   KC_V,   CTL_T(KC_Z),      KC_RSFT,
                                   KC_UP, KC_DOWN, KC_LBRC, KC_RBRC, KC_FN1,
-             KC_LALT,        CTL_T(KC_ESC),
+             KC_LALT, CTL_T(KC_ESC),
              KC_PGUP,
-             KC_PGDN,MEH_T(KC_NO), KC_SPC
+             KC_PGDN, MEH(KC_NO), KC_SPC
 ),
 /* Keymap 1: Symbol Layer
  *
