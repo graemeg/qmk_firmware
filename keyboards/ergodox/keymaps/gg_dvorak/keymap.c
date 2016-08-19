@@ -8,15 +8,10 @@
 
 /*
   Author: Graeme Geldenhuys <graeme@geldenhuys.co.uk>
-  Ver 1.4
+  Ver 1.5
   Based on the default Dvorak keymap (2016-08-16), and applied some
-  tweaks from the TypeMatrix 2030 design. These are the changes:
-  
-  BASE:  LGUI replaced with PScr
-         Top row LEFT replaced with COPY
-         Top row RIGHT replace with PASTE
-  SYMB:  New keymaps for: PrintScreen, Insert
-  MDIA:  New keymap for: Teensy
+  tweaks from the TypeMatrix 2030 design. Some key locations are also
+  designed to work well with my programming in Lazarus and Delphi.
 */
 
 #define CUT      LCTL(KC_X)      // C-x Cut
@@ -28,42 +23,42 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
  * ╭────────┬──────┬──────┬──────┬──────┬──────┬──────╮           ╭──────┬──────┬──────┬──────┬──────┬──────┬────────╮
- * │   =    │   1  │   2  │   3  │   4  │   5  │ INS  │           │ DEL  │   6  │   7  │   8  │   9  │   0  │   \    │
+ * │  Esc   │  1  !│  2  @│  3  #│  4  $│  5  %│ INS  │           │ DEL  │  6  ^│  7  &│  8  *│  9  (│  0  )│   \   |│
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┤           ├──────┼──────┼──────┼──────┼──────┼──────┼────────┤
- * │ Del    │   '  │   ,  │   .  │   P  │   Y  │ Del  │           │ BkSp │   F  │   G  │   C  │   R  │   L  │   /    │
+ * │  Tab   │  '  "│  ,  <│  .  >│  P   │   Y  │ Del  │           │ BkSp │   F  │   G  │   C  │   R  │   L  │   /   ?│
  * ├────────┼──────┼──────┼──────┼──────┼──────┤      │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │ Tab    │A /~L2│   O  │   E  │   U *│   I  ├──────┤           ├──────┤   D  │*  H  │   T  │   N  │S /~L2│   ─    │
+ * │  =/+   │A /~L2│   O  │   E  │  U • │   I  ├──────┤           ├──────┤   D  │ • H  │   T  │   N  │S /~L2│   ─   _│
  * ├────────┼──────┼──────┼──────┼──────┼──────┤ C+F9 │           │ Enter├──────┼──────┼──────┼──────┼──────┼────────┤
- * │ LShift │;/Ctrl│   Q  │   J  │   K  │   X  │      │           │      │   B  │   M  │   W  │   V  │Z/Ctrl│ RShift │
+ * │ LShift │;/Ctrl│   Q  │   J  │  K   │   X  │      │           │      │   B  │   M  │   W  │   V  │Z/Ctrl│ RShift │
  * ╰─┬──────┼──────┼──────┼──────┼──────┼──────┴──────╯           ╰──────┴──────┼──────┼──────┼──────┼──────┼──────┬─╯
- *   │Grv/L2│  Alt │ CUT  │ COPY │ PASTE│                                       │  Up  │ Down │   [  │   ]  │ SLCK │
+ *   │ Ctrl │  Alt │ CUT  │ COPY │ PASTE│                                       │ Left │  Up  │ Down │ Right│ SLCK │
  *   ╰──────┴──────┴──────┴──────┴──────╯                                       ╰──────┴──────┴──────┴──────┴──────╯
  *                                        ╭──────┬──────╮       ╭──────┬────────╮
- *                                        │ App  │ PScr │       │ CAPS │Ctrl/Esc│
+ *                                        │Home  │ End  │       │ CAPS │Ctrl/Esc│
  *                                 ╭──────┼──────┼──────┤       ├──────┼────────┼──────╮
- *                                 │      │      │ Home │       │ PgUp │        │      │
- *                                 │ BkSp │ L1   ├──────┤       ├──────┤  ~L1   │ Space│
- *                                 │      │      │ End  │       │ PgDn │        │      │
+ *                                 │      │      │ Apps │       │ PgUp │        │      │
+ *                                 │ BkSp │ ~L1  ├──────┤       ├──────┤  ~L1   │ Space│
+ *                                 │      │      │ PScr │       │ PgDn │        │      │
  *                                 ╰──────┴──────┴──────╯       ╰──────┴────────┴──────╯
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
-        KC_EQL,         KC_1,           KC_2,    KC_3,   KC_4,   KC_5,   KC_INS,
-        KC_DELT,        KC_QUOT,        KC_COMM, KC_DOT, KC_P,   KC_Y,   KC_DELT,
-        KC_TAB,         LT(MDIA, KC_A), KC_O,    KC_E,   KC_U,   KC_I,
+        CTL_T(KC_ESC),  KC_1,           KC_2,    KC_3,   KC_4,   KC_5,   KC_INS,
+        KC_TAB,         KC_QUOT,        KC_COMM, KC_DOT, KC_P,   KC_Y,   KC_DELT,
+        KC_EQL,         LT(MDIA, KC_A), KC_O,    KC_E,   KC_U,   KC_I,
         KC_LSFT,        CTL_T(KC_SCLN), KC_Q,    KC_J,   KC_K,   KC_X,   COMPI,
-         LT(MDIA,KC_GRV), KC_LALT, CUT, COPY, PASTE,
-                                              ALT_T(KC_APP),  KC_PSCR,
-                                                              KC_HOME,
-                                             KC_BSPC, KC_FN1, KC_END,
+        KC_LCTRL, KC_LALT, CUT, COPY, PASTE,
+                                              KC_HOME,  KC_END,
+                                                 ALT_T(KC_APP),
+                                      KC_BSPC, KC_FN1, KC_PSCR,
         // right hand
              KC_DELT,    KC_6,   KC_7,   KC_8,   KC_9,   KC_0,            KC_BSLS,
              KC_BSPC,   KC_F,   KC_G,   KC_C,   KC_R,   KC_L,             KC_SLSH,
                         KC_D,   KC_H,   KC_T,   KC_N,   LT(MDIA, KC_S),   KC_MINS,
              KC_ENT,    KC_B,   KC_M,   KC_W,   KC_V,   CTL_T(KC_Z),      KC_RSFT,
-                                  KC_UP, KC_DOWN, KC_LBRC, KC_RBRC, KC_SLCK,
+                                  KC_LEFT, KC_UP, KC_DOWN, KC_RIGHT, KC_SLCK,
              KC_CAPS, CTL_T(KC_ESC),
              KC_PGUP,
              KC_PGDN, KC_FN1, KC_SPC
