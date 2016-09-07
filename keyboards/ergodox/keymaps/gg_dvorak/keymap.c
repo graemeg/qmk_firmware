@@ -78,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
-        KC_ESC,      M(KF_1),        M(KF_2),  M(KF_3),  M(KF_4),   M(KF_5),   M(MACRO_ISEQUALS),
+        KC_ESC,      KC_1,           KC_2,     KC_3,     KC_4,      KC_5,   M(MACRO_ISEQUALS),
         KC_TAB,      KC_SCLN,        KC_COMM,  KC_DOT,   KC_P,      KC_Y,      KC_DELT,
         KC_EQL,      LT(ARWS, KC_A), KC_O,     KC_E,     KC_U,      KC_I,
         KC_LSFT,     CTL_T(KC_QUOT), KC_Q,     KC_J,     KC_K,      KC_X,      COMPI,
@@ -87,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                   ALT_T(KC_APP),
                                  OSM(MOD_LSFT), KC_FN2, KC_PSCR,
         // right hand
-             KC_INS,    M(KF_6),  M(KF_7),  M(KF_8),  M(KF_9),  M(KF_10),        KC_BSLS,
+             KC_INS,    KC_6,     KC_7,     KC_8,     KC_9,     KC_0,            KC_BSLS,
              KC_BSPC,   KC_F,     KC_G,     KC_C,     KC_R,     KC_L,            KC_SLSH,
                         KC_D,     KC_H,     KC_T,     KC_N,     LT(FKEY, KC_S),  KC_MINS,
              KC_ENT,    KC_B,     KC_M,     KC_W,     KC_V,     CTL_T(KC_Z),     KC_RSFT,
@@ -278,7 +278,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
       switch(id) {
 		case MACRO_TODO:
 			if (record->event.pressed) {
-				return MACRO( T(SLASH), T(SLASH), D(LSHIFT), T(T), T(O), T(D), T(O), U(LSHIFT), T(SPACE), END );
+				return MACRO( T(SLASH), T(SLASH), T(SPACE), D(LSHIFT), T(T), T(O), T(D), T(O), T(SCOLON), U(LSHIFT), T(SPACE), END );
 			} 
 			break;
 		case MACRO_ISEQUALS:
