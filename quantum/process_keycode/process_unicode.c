@@ -29,6 +29,7 @@ void unicode_input_start (void) {
     register_code(KC_LALT);
     break;
   case UC_LNX:
+  case UC_BSD:
     register_code(KC_LCTL);
     register_code(KC_LSFT);
     register_code(KC_U);
@@ -53,6 +54,7 @@ void unicode_input_finish (void) {
     unregister_code(KC_LALT);
     break;
   case UC_LNX:
+  case UC_BSD:
     register_code(KC_SPC);
     unregister_code(KC_SPC);
     break;
