@@ -1,13 +1,16 @@
 #include "ergodox.h"
 #include "debug.h"
 #include "action_layer.h"
-#include "keymap_extras/keymap_uk.h"
+/* #include "keymap_extras/keymap_uk.h" */
+#include "process_unicode.h"
 #include "timer.h"
+
+#define PREVENT_STUCK_MODIFIERS
 
 #define BASE 0 // default layer
 #define SYMB 1 // symbols
 #define FKEY 2 // function keys
-#define ARWS 3 // arrow keys
+#define NPAD 3 // number pad
 
 
 /*
@@ -56,58 +59,58 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
  * ╭────────┬──────┬──────┬──────┬──────┬──────┬──────╮           ╭──────┬──────┬──────┬──────┬──────┬──────┬────────╮
- * │  Esc   │  1  !│  2  @│  3  #│  4  $│  5  %│  :=  │           │ INS  │  6  ^│  7  &│  8  *│  9  (│  0  )│   \   |│
+ * │  Esc   │  1  !│  2  @│  3  #│  4  $│  5  %│ C+F9 │           │ INS  │  6  ^│  7  &│  8  *│  9  (│  0  )│   \   |│
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┤           ├──────┼──────┼──────┼──────┼──────┼──────┼────────┤
- * │  Tab   │ ;   :│  ,  <│  .  >│  P   │   Y  │ Del  │           │ BkSp │   F  │   G  │   C  │   R  │   L  │   /   ?│
+ * │  Tab   │ '   "│  ,  <│  .  >│  P   │   Y  │ DEL  │           │ BkSp │   F  │   G  │   C  │   R  │   L  │   /   ?│
  * ├────────┼──────┼──────┼──────┼──────┼──────┤      │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │  =/+   │A /~L3│   O  │   E  │  U • │   I  ├──────┤           ├──────┤   D  │ • H  │   T  │   N  │S /~L2│   ─   _│
- * ├────────┼──────┼──────┼──────┼──────┼──────┤ C+F9 │           │ Enter├──────┼──────┼──────┼──────┼──────┼────────┤
- * │ LShift │'"/Ctl│   Q  │   J  │  K   │   X  │      │           │      │   B  │   M  │   W  │   V  │Z/Ctrl│ RShift │
+ * │  =/+   │A /~L3│   O  │   E  │  U • │   I  ├──────┤           ├──────┤   D  │ • H  │   T  │   N  │   S  │ ─ / ~L2│
+ * ├────────┼──────┼──────┼──────┼──────┼──────┤  L2  │           │Enter ├──────┼──────┼──────┼──────┼──────┼────────┤
+ * │ LShift │ ;/Ctl│   Q  │   J  │  K   │   X  │      │           │      │   B  │   M  │   W  │   V  │ Z/Ctl│ RShift │
  * ╰─┬──────┼──────┼──────┼──────┼──────┼──────┴──────╯           ╰──────┴──────┼──────┼──────┼──────┼──────┼──────┬─╯
- *   │LCtrl │ LAlt │ CUT  │ COPY │ PASTE│                                       │ Left │  Up  │ Down │ Right│ SLock│
+ *   │LCtrl │ LAlt │ CUT  │ COPY │ PASTE│                                       │   ◀  │   ▲  │   ▼  │  ▶   │  L3  │
  *   ╰──────┴──────┴──────┴──────┴──────╯                                       ╰──────┴──────┴──────┴──────┴──────╯
- *                                        ╭──────┬──────╮       ╭──────┬────────╮
- *                                        │ CAPS │ RCtrl│       │ Home │  End   │
- *                                 ╭──────┼──────┼──────┤       ├──────┼────────┼──────╮
- *                                 │      │      │ Apps │       │ PgUp │        │      │
- *                                 │Shift │  L2  ├──────┤       ├──────┤   L1   │ Space│
- *                                 │      │      │ PScr │       │ PgDn │        │      │
- *                                 ╰──────┴──────┴──────╯       ╰──────┴────────┴──────╯
+ *                                        ╭──────┬──────╮       ╭──────┬──────╮
+ *                                        │ CAPS │ RCtrl│       │ Home │ End  │
+ *                                 ╭──────┼──────┼──────┤       ├──────┼──────┼──────╮
+ *                                 │      │      │ Apps │       │ PgUp │      │      │
+ *                                 │ ~L1  │Space ├──────┤       ├──────┤  ~L2 │ Space│
+ *                                 │      │      │ PScr │       │ PgDn │      │      │
+ *                                 ╰──────┴──────┴──────╯       ╰──────┴──────┴──────╯
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
-        KC_ESC,      KC_1,           KC_2,     KC_3,     KC_4,      KC_5,   M(MACRO_ISEQUALS),
-        KC_TAB,      KC_SCLN,        KC_COMM,  KC_DOT,   KC_P,      KC_Y,      KC_DELT,
-        KC_EQL,      LT(ARWS, KC_A), KC_O,     KC_E,     KC_U,      KC_I,
-        KC_LSFT,     CTL_T(KC_QUOT), KC_Q,     KC_J,     KC_K,      KC_X,      COMPI,
+        KC_ESC,      KC_1,           KC_2,     KC_3,     KC_4,     KC_5,   COMPI,
+        KC_TAB,      KC_QUOT,        KC_COMM,  KC_DOT,   KC_P,     KC_Y,   KC_DELT,
+        KC_EQL,      LT(NPAD, KC_A), KC_O,     KC_E,     KC_U,     KC_I,
+        KC_LSFT,     CTL_T(KC_SCLN), KC_Q,     KC_J,     KC_K,     KC_X,   TG(2),
         KC_LCTRL,    KC_LALT,        CUT,      COPY,     PASTE,
-                                              KC_CAPS, KC_RCTRL,
-                                                  ALT_T(KC_APP),
-                                 OSM(MOD_LSFT), KC_FN2, KC_PSCR,
+                                             KC_CAPS, KC_RCTRL,
+                                                 ALT_T(KC_APP),
+                                     KC_FN1,  KC_SPC,  KC_PSCR,
         // right hand
              KC_INS,    KC_6,     KC_7,     KC_8,     KC_9,     KC_0,            KC_BSLS,
              KC_BSPC,   KC_F,     KC_G,     KC_C,     KC_R,     KC_L,            KC_SLSH,
-                        KC_D,     KC_H,     KC_T,     KC_N,     LT(FKEY, KC_S),  KC_MINS,
+                        KC_D,     KC_H,     KC_T,     KC_N,     KC_S,            LT(FKEY, KC_MINS),
              KC_ENT,    KC_B,     KC_M,     KC_W,     KC_V,     CTL_T(KC_Z),     KC_RSFT,
-                                  KC_LEFT,  KC_UP,    KC_DOWN,  KC_RIGHT,        KC_SLCK,
+                                  KC_LEFT,  KC_UP,    KC_DOWN,  KC_RIGHT,        TG(3),
              KC_HOME,  KC_END,
              KC_PGUP,
-             KC_PGDN, KC_FN1, KC_SPC
+             KC_PGDN, KC_FN2, KC_SPC
 ),
 /* Keymap 1: Symbol Layer (red)
  *
  * ╭────────┬──────┬──────┬──────┬──────┬──────┬──────╮           ╭──────┬──────┬──────┬──────┬──────┬──────┬────────╮
  * │        │      │      │      │      │      │      │           │      │      │      │      │      │      │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┤           ├──────┼──────┼──────┼──────┼──────┼──────┼────────┤
- * │        │  !   │  @   │  {   │  }   │  |   │ TODO │           │      │      │  7   │  8   │  9   │  *   │        │
- * ├────────┼──────┼──────┼──────┼──────┼──────┤      │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │        │  #   │  $   │  (   │  ) • │  `   ├──────┤           ├──────┤      │• 4   │  5   │  6   │  +   │        │
+ * │   |    │  !   │  @   │  {   │  }   │  +   │ TODO │           │      │      │      │      │      │      │        │
+ * ├────────┼──────┼──────┼──────┼──────┼──────┤      │     1     │      ├──────┼──────┼──────┼──────┼──────┼────────┤
+ * │   `    │  :   │  $   │  (   │  ) • │  =   ├──────┤           ├──────┤      │•     │      │      │      │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┤  ( ) │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │        │      │  ^   │  [   │  ]   │  ~   │      │           │      │      │  1   │  2   │  3   │  \   │        │
+ * │        │  #   │  ^   │  [   │  ]   │  ~   │      │           │      │      │      │      │      │      │        │
  * ╰─┬──────┼──────┼──────┼──────┼──────┼──────┴──────╯           ╰──────┴──────┼──────┼──────┼──────┼──────┼──────┬─╯
- *   │      │      │      │      │      │                                       │  0   │  00  │  .   │  =   │      │
+ *   │      │  £   │      │      │      │                                       │      │      │      │      │ SLCK │
  *   ╰──────┴──────┴──────┴──────┴──────╯                                       ╰──────┴──────┴──────┴──────┴──────╯
  *                                        ╭──────┬──────╮       ╭──────┬────────╮
  *                                        │      │      │       │      │        │
@@ -120,20 +123,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // SYMBOLS
 [SYMB] = KEYMAP(
        // left hand
-       KC_TRNS,KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS,KC_EXLM,KC_AT,  KC_LCBR,KC_RCBR,KC_PIPE,M(MACRO_TODO),
-       KC_TRNS,KC_HASH,KC_DLR, KC_LPRN,KC_RPRN,KC_GRV,
-       KC_TRNS,KC_TRNS,KC_CIRC,KC_LBRC,KC_RBRC,KC_TILD,M(MACRO_PARENTHESE),
-       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-                                       KC_TRNS,KC_TRNS,
-                                               KC_TRNS,
-                               KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,  KC_TRNS,
+       KC_PIPE,  KC_EXLM,   KC_AT,     KC_LCBR,   KC_RCBR,   KC_PLUS,  M(MACRO_TODO),
+       KC_GRV,   KC_COLN,   KC_DLR,    KC_LPRN,   KC_RPRN,   KC_EQL,
+       KC_TRNS,  KC_HASH,   KC_CIRC,   KC_LBRC,   KC_RBRC,   KC_TILD,  M(MACRO_PARENTHESE),
+       KC_TRNS,  UC(0x00A3),KC_TRNS,   KC_TRNS,   KC_TRNS,
+                                       KC_TRNS,  KC_TRNS,
+                                                 KC_TRNS,
+                              KC_TRNS, KC_TRNS,  KC_TRNS,
        // right hand
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_7,   KC_8,    KC_9,    KC_ASTR, KC_TRNS,
-                KC_TRNS, KC_4,   KC_5,    KC_6,    KC_PLUS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_1,   KC_2,    KC_3,    KC_BSLS, KC_TRNS,
-                         KC_0,   M(MDBL0),KC_DOT,  KC_EQL,  KC_TRNS,
+       KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_SLCK,
        KC_TRNS, KC_TRNS,
        KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS
@@ -141,65 +144,65 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 2: Function keys (green)
  *
  * ╭────────┬──────┬──────┬──────┬──────┬──────┬──────╮           ╭──────┬──────┬──────┬──────┬──────┬──────┬────────╮
- * │        │      │      │      │      │      │      │           │      │      │      │      │      │      │        │
+ * │        │  F1  │  F2  │  F3  │  F4  │  F5  │      │           │      │ F6   │  F7  │  F8  │  F9  │ F10  │  F11   │
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┤           ├──────┼──────┼──────┼──────┼──────┼──────┼────────┤
- * │        │  F1  │  F2  │  F3  │  F4  │  F5  │      │           │      │      │      │      │      │      │        │
- * ├────────┼──────┼──────┼──────┼──────┼──────┤      │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │        │  F6  │  F7  │  F8  │  F9 •│ F10  ├──────┤           ├──────┤      │•Shift│ Alt  │      │      │        │
+ * │        │  F1  │  F2  │  F3  │  F4  │  F5  │      │           │      │      │      │      │      │      │  F12   │
+ * ├────────┼──────┼──────┼──────┼──────┼──────┤      │     2     │      ├──────┼──────┼──────┼──────┼──────┼────────┤
+ * │        │  F6  │  F7  │  F8  │  F9 •│ F10  ├──────┤           ├──────┤      │•     │      │      │      │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┤      │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
  * │        │ F11  │ F12  │      │      │      │      │           │      │      │      │      │      │      │        │
  * ╰─┬──────┼──────┼──────┼──────┼──────┼──────┴──────╯           ╰──────┴──────┼──────┼──────┼──────┼──────┼──────┬─╯
- *   │      │      │      │      │      │                                       │      │      │      │      │      │
+ *   │      │      │      │      │      │                                       │      │      │      │      │ SLCK │
  *   ╰──────┴──────┴──────┴──────┴──────╯                                       ╰──────┴──────┴──────┴──────┴──────╯
  *                                        ╭──────┬──────╮       ╭──────┬────────╮
  *                                        │      │      │       │      │        │
  *                                 ╭──────┼──────┼──────┤       ├──────┼────────┼──────╮
  *                                 │      │      │      │       │      │        │      │
- *                                 │LCtrl │      ├──────┤       ├──────┤        │ RCtrl│
+ *                                 │      │      ├──────┤       ├──────┤        │      │
  *                                 │      │      │      │       │      │        │      │
  *                                 ╰──────┴──────┴──────╯       ╰──────┴────────┴──────╯
  */
 [FKEY] = KEYMAP(
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5, KC_TRNS,
        KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_TRNS,
        KC_TRNS, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
        KC_TRNS, KC_F11,  KC_F12,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS  , KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                            KC_TRNS, KC_TRNS,
                                                     KC_TRNS,
-                                  KC_LCTRL, KC_TRNS, KC_TRNS,
+                                  KC_TRNS, KC_TRNS, KC_TRNS,
     // right hand
+       KC_TRNS,  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_F11,
+       KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_F12,
+                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                 KC_TRNS, KC_RSFT, KC_RALT, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_SLCK,
        KC_TRNS, KC_TRNS,
        KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_RCTRL
+       KC_TRNS, KC_TRNS, KC_TRNS
 ),
-/* Keymap 3: Arrow keys (blue)
+/* Keymap 3: Numpad (blue)
  *
  * ╭────────┬──────┬──────┬──────┬──────┬──────┬──────╮           ╭──────┬──────┬──────┬──────┬──────┬──────┬────────╮
  * │        │      │      │      │      │      │      │           │      │      │      │      │      │      │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┤           ├──────┼──────┼──────┼──────┼──────┼──────┼────────┤
- * │        │      │      │      │      │      │      │           │      │      │ Home │  Up  │ End  │      │        │
+ * │        │      │      │      │      │      │      │           │      │      │  7   │  8   │  9   │  *   │        │
+ * ├────────┼──────┼──────┼──────┼──────┼──────┤      │     3     │      ├──────┼──────┼──────┼──────┼──────┼────────┤
+ * │        │      │      │      │     •│      ├──────┤           ├──────┤      │• 4   │  5   │  6   │  +   │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┤      │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │        │      │      │      │     •│      ├──────┤           ├──────┤ PgUp │•Left │ Down │ Right│      │        │
- * ├────────┼──────┼──────┼──────┼──────┼──────┤      │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │        │      │      │      │      │      │      │           │      │ PgDn │      │ Down │      │      │        │
+ * │        │      │      │      │      │      │      │           │      │      │  1   │  2   │  3   │  \   │        │
  * ╰─┬──────┼──────┼──────┼──────┼──────┼──────┴──────╯           ╰──────┴──────┼──────┼──────┼──────┼──────┼──────┬─╯
- *   │      │      │      │      │      │                                       │      │      │      │      │      │
+ *   │      │      │      │      │      │                                       │  0   │  00  │  .   │  =   │      │
  *   ╰──────┴──────┴──────┴──────┴──────╯                                       ╰──────┴──────┴──────┴──────┴──────╯
  *                                        ╭──────┬──────╮       ╭──────┬────────╮
  *                                        │      │      │       │      │        │
  *                                 ╭──────┼──────┼──────┤       ├──────┼────────┼──────╮
  *                                 │      │      │      │       │      │        │      │
- *                                 │      │      ├──────┤       ├──────┤        │ LCtrl│
+ *                                 │      │      ├──────┤       ├──────┤        │      │
  *                                 │      │      │      │       │      │        │      │
  *                                 ╰──────┴──────┴──────╯       ╰──────┴────────┴──────╯
  */
-[ARWS] = KEYMAP(
+[NPAD] = KEYMAP(
        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -209,14 +212,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_TRNS,
                                   KC_TRNS, KC_TRNS, KC_TRNS,
     // right hand
-       KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS,  KC_TRNS, KC_HOME, KC_UP  , KC_END,  KC_TRNS, KC_TRNS,
-                 KC_PGUP, KC_LEFT, KC_DOWN, KC_RIGHT,KC_TRNS, KC_TRNS,
-       KC_TRNS,  KC_PGDN, KC_TRNS, KC_DOWN, KC_TRNS, KC_TRNS, KC_TRNS,
-                          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_7,   KC_8,    KC_9,    KC_ASTR, KC_TRNS,
+                KC_TRNS, KC_4,   KC_5,    KC_6,    KC_PLUS, KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_1,   KC_2,    KC_3,    KC_BSLS, KC_TRNS,
+                         KC_0,   M(MDBL0),KC_DOT,  KC_EQL,  KC_TRNS,
        KC_TRNS, KC_TRNS,
        KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_LCTRL
+       KC_TRNS, KC_TRNS, KC_TRNS
 ),
 };
 
@@ -245,7 +248,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 const uint16_t PROGMEM fn_actions[] = {
     [1] = ACTION_LAYER_TAP_TOGGLE(SYMB),                // FN1 - Momentary Layer 1 (Symbols)
     [2] = ACTION_LAYER_TAP_TOGGLE(FKEY),                // FN2 - Momentary Layer 2 (F-keys)
-    [3] = ACTION_LAYER_TAP_TOGGLE(ARWS)                 // FN3 - Momentary Layer 3 (Arrows)
+    [3] = ACTION_LAYER_TAP_TOGGLE(NPAD)                 // FN3 - Momentary Layer 3 (Numpad)
 };
 
 void ang_handle_kf (keyrecord_t *record, uint8_t id)
@@ -307,18 +310,21 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 
 // Runs just one time when the keyboard initializes.
 void matrix_init_user(void) {
-
+	
+	set_unicode_input_mode(UC_BSD);
+/*
 	ergodox_led_all_on();
 	for (int i = LED_BRIGHTNESS_HI; i > LED_BRIGHTNESS_LO; i--) {
 		ergodox_led_all_set (i);
 		wait_ms (5);
 	}
-	wait_ms(1000);
+	wait_ms(700);
 	for (int i = LED_BRIGHTNESS_LO; i > 0; i--) {
 		ergodox_led_all_set (i);
 		wait_ms (10);
 	}
 	ergodox_led_all_off();
+*/
 };
 
 // Runs constantly in the background, in a loop.
@@ -338,7 +344,7 @@ void matrix_scan_user(void) {
         case FKEY:
             ergodox_right_led_2_on();
             break;
-        case ARWS:
+        case NPAD:
             ergodox_right_led_3_on();
             break;
         default:
