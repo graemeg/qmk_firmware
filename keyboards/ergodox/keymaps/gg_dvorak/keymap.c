@@ -15,10 +15,10 @@
 
 /*
   Author: Graeme Geldenhuys <graeme@geldenhuys.co.uk>
-  Ver 1.11
-  Based on the default Dvorak keymap (2016-08-16), and applied some
+  Ver 1.12   (2017-05-12)
+  Based on the default Dvorak keymap, and applied some
   tweaks from the TypeMatrix 2030 design. Some key locations are also
-  designed to work well with my programming in Lazarus and Delphi.
+  designed to work well with my programming environment (FPC +Lazarus).
 */
 
 #define CUT      LCTL(KC_X)      // C-x Cut
