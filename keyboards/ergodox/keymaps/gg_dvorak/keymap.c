@@ -305,7 +305,7 @@ void matrix_init_user(void) {
 // Runs constantly in the background, in a loop.
 void matrix_scan_user(void) {
 
-    static uint8_t state;
+//    static uint8_t state;
     uint8_t layer = biton32(layer_state);
 
     ergodox_board_led_off();
@@ -314,22 +314,37 @@ void matrix_scan_user(void) {
     ergodox_right_led_3_off();
 
     //reduce LED on time to 1/6th because LEDs are too strong
-    if (++state < 6) return;
-    state = 0;
+//    if (++state < 6) return;
+//    state = 0;
 
     switch (layer) {
-      // TODO: Make this relevant to the ErgoDox EZ.
-        case SYMB:
+        case 1:
             ergodox_right_led_1_on();
             break;
-        case FKEY:
+        case 2:
             ergodox_right_led_2_on();
             break;
-        case QWER:
+        case 3:
+            ergodox_right_led_3_on();
+            break;
+        case 4:
+            ergodox_right_led_1_on();
+            ergodox_right_led_2_on();
+            break;
+        case 5:
+            ergodox_right_led_1_on();
+            ergodox_right_led_3_on();
+            break;
+        case 6:
+            ergodox_right_led_2_on();
+            ergodox_right_led_3_on();
+            break;
+        case 7:
+            ergodox_right_led_1_on();
+            ergodox_right_led_2_on();
             ergodox_right_led_3_on();
             break;
         default:
-            // none
             break;
     }
 
