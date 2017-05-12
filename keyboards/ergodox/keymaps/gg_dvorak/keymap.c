@@ -136,11 +136,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ╭────────┬──────┬──────┬──────┬──────┬──────┬──────╮           ╭──────┬──────┬──────┬──────┬──────┬──────┬────────╮
  * │        │  F1  │  F2  │  F3  │  F4  │  F5  │      │           │      │ F6   │  F7  │  F8  │  F9  │ F10  │  F11   │
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┤           ├──────┼──────┼──────┼──────┼──────┼──────┼────────┤
- * │        │      │      │      │      │      │      │           │      │      │      │      │      │      │  F12   │
+ * │        │ Hyp-1│ Hyp-2│ Hyp-3│  H + │      │      │           │      │      │      │      │      │      │  F12   │
  * ├────────┼──────┼──────┼──────┼──────┼──────┤      │     2     │      ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │        │      │      │      │     •│      ├──────┤           ├──────┤      │•     │      │      │      │        │
+ * │        │ Hyp-4│ Hyp-5│ Hyp-6│  H -•│      ├──────┤           ├──────┤      │•     │      │      │      │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┤      │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │        │      │      │      │      │      │      │           │      │      │      │      │      │      │        │
+ * │        │ Hyp-7│ Hyp-8│ Hyp-9│      │      │      │           │      │      │      │      │      │      │        │
  * ╰─┬──────┼──────┼──────┼──────┼──────┼──────┴──────╯           ╰──────┴──────┼──────┼──────┼──────┼──────┼──────┬─╯
  *   │      │      │      │      │      │                                       │      │      │      │      │ SLCK │
  *   ╰──────┴──────┴──────┴──────┴──────╯                                       ╰──────┴──────┴──────┴──────┴──────╯
@@ -152,23 +152,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 │      │      │      │       │      │        │      │
  *                                 ╰──────┴──────┴──────╯       ╰──────┴────────┴──────╯
  */
-       KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                           KC_TRNS, KC_TRNS,
-                                                    KC_TRNS,
-                                  KC_TRNS, KC_TRNS, KC_TRNS,
-    // right hand
-       KC_TRNS,  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_F11,
-       KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_F12,
-                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_SLCK,
-       KC_TRNS, KC_TRNS,
-       KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS
+	// left hand
+	KC_TRNS,	KC_F1,	KC_F2,	KC_F3,	KC_F4,	KC_F5,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	HYPR(KC_KP_1),	HYPR(KC_KP_2),	HYPR(KC_KP_3),	ALL_T(KC_KP_PLUS),	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	HYPR(KC_KP_4),	HYPR(KC_KP_5),	HYPR(KC_KP_6),	ALL_T(KC_KP_MINUS),
+	KC_TRNS,	KC_TRNS,	HYPR(KC_KP_7),	HYPR(KC_KP_8),	HYPR(KC_KP_9),	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+
+	KC_TRNS,	KC_TRNS,
+	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_TRNS,
+
+	// right hand
+	KC_TRNS,	KC_F6,	KC_F7,	KC_F8,	KC_F9,	KC_F10,	KC_F11,
+	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_F12,
+	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_SLCK,
+
+	KC_TRNS,	KC_TRNS,
+	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_TRNS
 ),
 
 [3] = KEYMAP(
