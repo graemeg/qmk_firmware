@@ -94,13 +94,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ╭────────┬──────┬──────┬──────┬──────┬──────┬──────╮           ╭──────┬──────┬──────┬──────┬──────┬──────┬────────╮
  * │        │      │      │      │      │      │      │           │ QWER │      │      │      │      │      │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┤           ├──────┼──────┼──────┼──────┼──────┼──────┼────────┤
- * │   |    │  !   │  @   │  {   │  }   │  +   │ TODO │           │      │      │  7   │  8   │  9   │  *   │        │
+ * │   |    │  !   │  @   │  {   │  }   │  +   │ TODO │           │      │      │  1   │  2   │  3   │  4   │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┤      │     1     │      ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │   `    │  :   │  $   │  (   │  ) • │  =   ├──────┤           ├──────┤      │• 4   │  5   │  6   │  +   │        │
+ * │   `    │  :   │  $   │  (   │  ) • │  =   ├──────┤           ├──────┤      │• 5   │  6   │  7   │  8   │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┤  ( ) │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │        │  #   │  ^   │  [   │  ]   │  ~   │      │           │      │      │  1   │  2   │  3   │  \   │        │
+ * │        │  #   │  ^   │  [   │  ]   │  ~   │      │           │      │      │  9   │  0   │      │      │        │
  * ╰─┬──────┼──────┼──────┼──────┼──────┼──────┴──────╯           ╰──────┴──────┼──────┼──────┼──────┼──────┼──────┬─╯
- *   │      │  £   │      │      │      │                                       │  0   │  00  │  .   │  =   │ SLCK │
+ *   │      │  £   │      │      │      │                                       │      │      │      │      │ SLCK │
  *   ╰──────┴──────┴──────┴──────┴──────╯                                       ╰──────┴──────┴──────┴──────┴──────╯
  *                                        ╭──────┬──────╮       ╭──────┬────────╮
  *                                        │      │      │       │      │        │
@@ -110,24 +110,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 │      │      │      │       │      │        │      │
  *                                 ╰──────┴──────┴──────╯       ╰──────┴────────┴──────╯
  */
-       // left hand
-       KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,  KC_TRNS,
-       KC_PIPE,  KC_EXLM,   KC_AT,     KC_LCBR,   KC_RCBR,   KC_PLUS,  M(MACRO_TODO),
-       KC_GRV,   KC_COLN,   KC_DLR,    KC_LPRN,   KC_RPRN,   KC_EQL,
-       KC_TRNS,  KC_HASH,   KC_CIRC,   KC_LBRC,   KC_RBRC,   KC_TILD,  M(MACRO_PARENTHESE),
-       KC_TRNS,  UC(0x00A3),KC_TRNS,   KC_TRNS,   KC_TRNS,
-                                       KC_TRNS,  KC_TRNS,
-                                                 KC_TRNS,
-                              KC_TRNS, KC_TRNS,  KC_TRNS,
-       // right hand
-       KC_FN3,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_7,   KC_8,    KC_9,    KC_ASTR, KC_TRNS,
-                KC_TRNS, KC_4,   KC_5,    KC_6,    KC_PLUS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_1,   KC_2,    KC_3,    KC_BSLS, KC_TRNS,
-                         KC_0,   M(MDBL0),KC_DOT,  KC_EQL,  KC_SLCK,
-       KC_TRNS, KC_TRNS,
-       KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS
+	// left hand
+	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+	KC_PIPE,	KC_EXLM,	KC_AT,	KC_LCBR,	KC_RCBR,	KC_PLUS,	M(MACRO_TODO),
+	KC_GRV,	KC_COLN,	KC_DLR,	KC_LPRN,	KC_RPRN,	KC_EQL,
+	KC_TRNS,	KC_HASH,	KC_CIRC,	KC_LBRC,	KC_RBRC,	KC_TILD,	M(MACRO_PARENTHESE),
+	KC_TRNS,	UC(0x00A3),	KC_TRNS,	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,
+	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_TRNS,
+
+	// right hand
+	KC_FN3,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_KP_1,	KC_KP_2,	KC_KP_3,	KC_KP_4,	KC_TRNS,
+	KC_TRNS,	KC_KP_5,	KC_KP_6,	KC_KP_7,	KC_KP_8,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_KP_9,	KC_KP_0,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_SLCK,
+	KC_TRNS,	KC_TRNS,
+	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_TRNS
 ),
 
 [2] = KEYMAP(
