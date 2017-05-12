@@ -66,24 +66,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
 [BASE] = KEYMAP(  // layer 0 : default
-        // left hand
-        KC_ESC,      KC_1,           KC_2,     KC_3,     KC_4,     KC_5,   COMPI,
-        KC_TAB,      KC_QUOT,        KC_COMM,  KC_DOT,   KC_P,     KC_Y,   KC_DELT,
-        SFT_T(KC_EQL), KC_A,         KC_O,     KC_E,     KC_U,     KC_I,
-        KC_LSFT,     CTL_T(KC_SCLN), KC_Q,     KC_J,     KC_K,     KC_X,   M(MACRO_ISEQUALS),
-        KC_LCTRL,    KC_LALT,        CUT,      COPY,     PASTE,
-                                             KC_CAPS, KC_RCTRL,
-                                                 ALT_T(KC_APP),
-                                     KC_FN1,  KC_SPC,  KC_PSCR,
-        // right hand
-             KC_INS,    KC_6,     KC_7,     KC_8,     KC_9,     KC_0,            KC_BSLS,
-             KC_BSPC,   KC_F,     KC_G,     KC_C,     KC_R,     KC_L,            KC_SLSH,
-                        KC_D,     KC_H,     KC_T,     KC_N,     KC_S,            SFT_T(KC_MINS),
-             KC_ENT,    KC_B,     KC_M,     KC_W,     KC_V,     CTL_T(KC_Z),     KC_RSFT,
-                                  KC_LEFT,  KC_UP,    KC_DOWN,  KC_RIGHT,        KC_RCTRL,
-             KC_HOME,  KC_END,
-             KC_PGUP,
-             KC_PGDN, KC_FN2, KC_SPC
+	// left hand
+	KC_ESC,	KC_1,	KC_2,	KC_3,	KC_4,	KC_5,	COMPI,
+	KC_TAB,	KC_QUOT,	KC_COMM,	KC_DOT,	KC_P,	KC_Y,	KC_DELT,
+	SFT_T(KC_EQL),	KC_A,	SFT_T(KC_O),	CTL_T(KC_E),	ALT_T(KC_U),	KC_I,
+	KC_LSFT,	CTL_T(KC_SCLN),	KC_Q,	KC_J,	KC_K,	KC_X,	M(MACRO_ISEQUALS),
+	KC_LCTRL,	KC_LALT,	CUT,	COPY,	PASTE,
+
+	KC_CAPS,	KC_RCTRL,
+	ALT_T(KC_APP),
+	KC_FN1,	KC_SPC,	KC_PSCR,
+
+	// right hand
+	KC_INS,	KC_6,	KC_7,	KC_8,	KC_9,	KC_0,	KC_BSLS,
+	KC_BSPC,	KC_F,	KC_G,	KC_C,	KC_R,	KC_L,	KC_SLSH,
+	KC_D,	ALT_T(KC_H),	CTL_T(KC_T),	SFT_T(KC_N),	KC_S,	SFT_T(KC_MINS),
+	KC_ENT,	KC_B,	KC_M,	KC_W,	KC_V,	CTL_T(KC_Z),	KC_RSFT,
+	KC_LEFT,	KC_UP,	KC_DOWN,	KC_RIGHT,	KC_RCTRL,
+
+	KC_HOME,	KC_END,
+	KC_PGUP,
+	KC_PGDN,	KC_FN2,	KC_SPC
 ),
 /* Keymap 1: Symbol Layer (red)
  *
