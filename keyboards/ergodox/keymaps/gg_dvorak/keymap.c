@@ -143,7 +143,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├────────┼──────┼──────┼──────┼──────┼──────┤      │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
  * │        │ Hyp-7│ Hyp-8│ Hyp-9│      │      │      │           │      │      │  F9  │  F10 │  F11 │  F12 │        │
  * ╰─┬──────┼──────┼──────┼──────┼──────┼──────┴──────╯           ╰──────┴──────┼──────┼──────┼──────┼──────┼──────┬─╯
- *   │      │      │      │      │      │                                       │      │      │      │      │ SLCK │
+ *   │      │      │      │      │      │                                       │      │      │      │      │      │
  *   ╰──────┴──────┴──────┴──────┴──────╯                                       ╰──────┴──────┴──────┴──────┴──────╯
  *                                        ╭──────┬──────╮       ╭──────┬────────╮
  *                                        │      │      │       │      │        │
@@ -169,7 +169,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	KC_TRNS,	KC_TRNS,	KC_F1,	KC_F2,	KC_F3,	KC_F4,	KC_TRNS,
 	KC_TRNS,	KC_F5,	KC_F6,	KC_F7,	KC_F8,	KC_TRNS,
 	KC_TRNS,	KC_TRNS,	KC_F9,	KC_F10,	KC_F11,	KC_F12,	KC_TRNS,
-	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_SLCK,
+	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 
 	KC_TRNS,	KC_TRNS,
 	KC_TRNS,
