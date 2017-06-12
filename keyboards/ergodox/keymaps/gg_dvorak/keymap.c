@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	KC_CAPS,	KC_RCTRL,
 	ALT_T(KC_APP),
-	KC_FN1,	KC_SPC,	KC_PSCR,
+	MO(1),	KC_SPC,	KC_PSCR,
 
 	// right hand
 	KC_INS,	KC_6,	KC_7,	KC_8,	KC_9,	KC_0,	KC_BSLS,
@@ -85,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	KC_HOME,	KC_END,
 	KC_PGUP,
-	KC_PGDN,	KC_FN2,	KC_SPC
+	KC_PGDN,	MO(2),	KC_SPC
 ),
 
 [1] = KEYMAP(
