@@ -1,3 +1,5 @@
+/* jedit settings  :elasticTabstops=true: */
+
 #include "ergodox.h"
 #include "debug.h"
 #include "action_layer.h"
@@ -155,9 +157,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 	// left hand
 	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
-	KC_TRNS,	KC_TRNS,	HYPR(KC_KP_1),	HYPR(KC_KP_2),	HYPR(KC_KP_3),	ALL_T(KC_KP_PLUS),	KC_TRNS,
-	KC_TRNS,	KC_TRNS,	HYPR(KC_KP_4),	HYPR(KC_KP_5),	HYPR(KC_KP_6),	ALL_T(KC_KP_MINUS),
-	KC_TRNS,	KC_TRNS,	HYPR(KC_KP_7),	HYPR(KC_KP_8),	HYPR(KC_KP_9),	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	HYPR(KC_1),	HYPR(KC_2),	HYPR(KC_3),	ALL_T(KC_KP_PLUS),	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	HYPR(KC_4),	HYPR(KC_5),	HYPR(KC_6),	ALL_T(KC_KP_MINUS),
+	KC_TRNS,	KC_TRNS,	HYPR(KC_7),	HYPR(KC_8),	HYPR(KC_9),	KC_TRNS,	KC_TRNS,
 	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 
 	KC_TRNS,	KC_TRNS,
