@@ -98,11 +98,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ╭────────┬──────┬──────┬──────┬──────┬──────┬──────╮           ╭──────┬──────┬──────┬──────┬──────┬──────┬────────╮
  * │        │      │      │      │      │      │      │           │ QWER │      │      │      │      │      │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┤           ├──────┼──────┼──────┼──────┼──────┼──────┼────────┤
- * │   |    │  !   │  @   │  {   │  }   │  +   │ TODO │           │      │      │      │      │      │      │  PgUp  │
+ * │   |    │  !   │  @   │  {   │  }   │  +   │ TODO │           │      │      │ Home │  ▲   │  End │      │  PgUp  │
  * ├────────┼──────┼──────┼──────┼──────┼──────┤      │     1     │      ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │   `    │  :   │  $   │  (   │  ) • │  =   ├──────┤           ├──────┤ Home │• ▲   │  End │      │      │  PgDn  │
+ * │   `    │  :   │  $   │  (   │  ) • │  =   ├──────┤           ├──────┤      │•  ◀  │  ▼   │   ▶  │      │  PgDn  │
  * ├────────┼──────┼──────┼──────┼──────┼──────┤  ( ) │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │        │  #   │  ^   │  [   │  ]   │  ~   │      │           │      │   ◀  │  ▼   │  ▶   │      │      │        │
+ * │        │  #   │  ^   │  [   │  ]   │  ~   │      │           │      │      │      │      │      │      │        │
  * ╰─┬──────┼──────┼──────┼──────┼──────┼──────┴──────╯           ╰──────┴──────┼──────┼──────┼──────┼──────┼──────┬─╯
  *   │      │  £   │  €   │      │      │                                       │      │      │      │      │ SLCK │
  *   ╰──────┴──────┴──────┴──────┴──────╯                                       ╰──────┴──────┴──────┴──────┴──────╯
@@ -126,9 +126,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	// right hand
 	KC_FN3,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
-	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_PGUP,
-		KC_HOME,	KC_UP,	KC_END,	KC_TRNS,	KC_TRNS,	KC_PGDN,
-	KC_TRNS,	KC_LEFT,	KC_DOWN,	KC_RIGHT,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_HOME,	KC_UP,	KC_END,	KC_TRNS,	KC_PGUP,
+		KC_TRNS,	KC_LEFT,	KC_DOWN,	KC_RIGHT,	KC_TRNS,	KC_PGDN,
+	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_SLCK,
 	KC_TRNS,	KC_TRNS,
 	KC_TRNS,
