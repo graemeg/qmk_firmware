@@ -136,8 +136,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [2] = KEYMAP(
-/* Keymap 2: Function keys (green)
- *
+/* Keymap 2: Function keys (green) & shortcuts. Gui key (aka Super key). Meta key (aka Alt key).
+ * MEH:   Alt+Control+Shift
+ * HYPER: Alt+Control+Shift+Gui
  * ╭────────┬──────┬──────┬──────┬──────┬──────┬──────╮           ╭──────┬──────┬──────┬──────┬──────┬──────┬────────╮
  * │        │      │      │      │      │      │      │           │      │      │      │      │      │      │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┤           ├──────┼──────┼──────┼──────┼──────┼──────┼────────┤
@@ -159,9 +160,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 	// left hand
 	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
-	KC_TRNS,	KC_TRNS,	HYPR(KC_1),	HYPR(KC_2),	HYPR(KC_3),	ALL_T(KC_KP_PLUS),	KC_TRNS,
-	KC_TRNS,	KC_TRNS,	HYPR(KC_4),	HYPR(KC_5),	HYPR(KC_6),	ALL_T(KC_KP_MINUS),
-	KC_TRNS,	KC_TRNS,	HYPR(KC_7),	HYPR(KC_8),	HYPR(KC_9),	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	MEH(KC_1),	HYPR(KC_2),	HYPR(KC_3),	ALL_T(KC_KP_PLUS),	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	MEH(KC_4),	HYPR(KC_5),	HYPR(KC_6),	ALL_T(KC_KP_MINUS),	KC_TRNS,
+	KC_TRNS,	HYPR(KC_7),	HYPR(KC_8),	HYPR(KC_9),	KC_TRNS,	KC_TRNS,	KC_TRNS,
 	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 
 	KC_TRNS,	KC_TRNS,
