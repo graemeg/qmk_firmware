@@ -39,7 +39,9 @@ enum {
   MACRO_PARENTHESE,
   MDBL0,
   EPRM,
-  VRSN
+  VRSN,
+  POUND,
+  EURO
 };
 
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
@@ -102,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├────────┼──────┼──────┼──────┼──────┼──────┤  ( ) │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
  * │        │  #   │  ^   │  [   │  ]   │  ~   │      │           │      │   ◀  │  ▼   │  ▶   │      │      │        │
  * ╰─┬──────┼──────┼──────┼──────┼──────┼──────┴──────╯           ╰──────┴──────┼──────┼──────┼──────┼──────┼──────┬─╯
- *   │      │  £   │      │      │      │                                       │      │      │      │      │ SLCK │
+ *   │      │  £   │  €   │      │      │                                       │      │      │      │      │ SLCK │
  *   ╰──────┴──────┴──────┴──────┴──────╯                                       ╰──────┴──────┴──────┴──────┴──────╯
  *                                        ╭──────┬──────╮       ╭──────┬────────╮
  *                                        │      │      │       │      │        │
@@ -112,12 +114,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 │      │      │      │       │      │        │      │
  *                                 ╰──────┴──────┴──────╯       ╰──────┴────────┴──────╯
  */
-	// left hand
+	// left hand  POUND = UC(0x00A3)
 	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 	KC_PIPE,	KC_EXLM,	KC_AT,	KC_LCBR,	KC_RCBR,	KC_PLUS,	M(MACRO_TODO),
 	KC_GRV,	KC_COLN,	KC_DLR,	KC_LPRN,	KC_RPRN,	KC_EQL,
 	KC_TRNS,	KC_HASH,	KC_CIRC,	KC_LBRC,	KC_RBRC,	KC_TILD,	M(MACRO_PARENTHESE),
-	KC_TRNS,	UC(0x00A3),	KC_TRNS,	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	M(POUND),	M(EURO),	KC_TRNS,	KC_TRNS,
 	KC_TRNS,	KC_TRNS,
 	KC_TRNS,
 	KC_TRNS,	KC_TRNS,	KC_TRNS,
@@ -283,6 +285,16 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 		case VRSN:
 			if (record->event.pressed) {
 				SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
+			}
+			break;
+		case POUND:
+			if (record->event.pressed) {
+				return MACRO( D(LCTRL), D(LSHIFT), T(U), U(LSHIFT), U(LCTRL), T(0), T(0), T(A), T(3), T(ENTER), END);
+			}
+			break;
+		case EURO:
+			if (record->event.pressed) {
+				return MACRO( D(LCTRL), D(LSHIFT), T(U), U(LSHIFT), U(LCTRL), T(2), T(0), T(A), T(C), T(ENTER), END);
 			}
 			break;
       }
