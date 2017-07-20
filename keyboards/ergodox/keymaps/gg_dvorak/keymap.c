@@ -14,11 +14,12 @@
 #define SYMB_R 2	// symbols
 #define FKEY 3	// function keys
 #define QWER 4	// QWERTY
+#define NUMB 5        // number keys
 
 
 /*
   Author: Graeme Geldenhuys <graeme@geldenhuys.co.uk>
-  Ver 1.12   (2017-05-12)
+  Ver 1.14   (2017-07-20)
   Based on the default Dvorak keymap, and applied some
   tweaks from the TypeMatrix 2030 design. Some key locations are also
   designed to work well with my programming environment (FPC +Lazarus).
@@ -32,6 +33,7 @@
 /* Define function actions for readability of keymap below */
 #define KC_HML	KC_FN4
 #define KC_UML	KC_FN5
+#define KC_AML      KC_FN6
 
 /* Custom keycodes */
 
@@ -61,45 +63,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
  * ╭────────┬──────┬──────┬──────┬──────┬──────┬──────╮           ╭──────┬──────┬──────┬──────┬──────┬──────┬────────╮
- * │  Esc   │  1  !│  2  @│  3  #│  4  $│  5  %│ C+F9 │           │ INS  │  6  ^│  7  &│  8  *│  9  (│  0  )│   \   |│
+ * │  Esc   │  F1  │  F2  │  F3  │  F4  │  F5  │  F11 │           │  F12 │  F6  │  F7  │  F8  │  F9  │  F10 │   \   |│
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┤           ├──────┼──────┼──────┼──────┼──────┼──────┼────────┤
- * │  Tab   │ '   "│  ,  <│  .  >│  P   │   Y  │ DEL  │           │ BkSp │   F  │   G  │   C  │   R  │   L  │   /   ?│
- * ├────────┼──────┼──────┼──────┼──────┼──────┤      │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │Shft =/+│   A  │   O  │   E  │  U • │   I  ├──────┤           ├──────┤   D  │ • H  │   T  │   N  │   S  │─ _ Shft│
+ * │  Tab   │  '  "│  ,  <│  .  >│  P   │   Y  │ ~L5  │           │ BkSp │   F  │   G  │  C   │  R   │   L  │   /   ?│
+ * ├────────┼──────┼──────┼──────┼──────┼──────┤ NUMB │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
+ * │Shft =/+│  A  s│  O  c│  E  a│  U •²│   I  ├──────┤           ├──────┤   D  │ • H ¹│  T  a│  N  c│  S  s│   ─   _│
  * ├────────┼──────┼──────┼──────┼──────┼──────┤  :=  │           │Enter ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │ LShift │ ;/Ctl│   Q  │   J  │  K   │   X  │      │           │      │   B  │   M  │   W  │   V  │ Z/Ctl│ RShift │
+ * │ LShift │  ;  :│   Q  │   J  │  K   │   X  │      │           │      │   B  │   M  │  W   │  V   │   Z  │ RShift │
  * ╰─┬──────┼──────┼──────┼──────┼──────┼──────┴──────╯           ╰──────┴──────┼──────┼──────┼──────┼──────┼──────┬─╯
- *   │LCtrl │ LAlt │ CUT  │ COPY │ PASTE│                                       │   ◀  │   ▲  │   ▼  │  ▶   │ RCtrl│
+ *   │LCtrl │ LAlt │ CUT  │ COPY │ PASTE│                                       │   ◀  │   ▲  │   ▼  │ RAlt │ RCtrl│
  *   ╰──────┴──────┴──────┴──────┴──────╯                                       ╰──────┴──────┴──────┴──────┴──────╯
  *                                        ╭──────┬──────╮       ╭──────┬──────╮
- *                                        │ CAPS │ RCtrl│       │ Home │ End  │
- *                                 ╭──────┼──────┼──────┤       ├──────┼──────┼──────╮
- *                                 │      │      │ Apps │       │ PgUp │      │      │
- *                                 │ ~L1  │Space ├──────┤       ├──────┤  ~L3 │ Space│
- *                                 │      │      │ PScr │       │ PgDn │      │      │
+ *                                        │ INS  │ CAPS │       │ GUI  │ Meh  │
+ *                                 ╭──────┼──────┼──────┤       ├──────┼──────┼──────╮      Hyper = Meh+Gui
+ *                                 │      │      │ App  │       │ PgUp │      │      │        Meh = Control+Alt+Shift
+ *                                 │ ~L1  │ Del  ├──────┤       ├──────┤ Enter│ Space│        GUI = Super key
+ *                                 │      │      │ PScr │       │ PgDn │      │      │        App = Menu key
  *                                 ╰──────┴──────┴──────╯       ╰──────┴──────┴──────╯
  */
 	// left hand
-	KC_ESC,	KC_1,	KC_2,	KC_3,	KC_4,	KC_5,	COMPI,
-	KC_TAB,	KC_QUOT,	KC_COMM,	KC_DOT,	KC_P,	KC_Y,	KC_DELT,
-	SFT_T(KC_EQL),	KC_A,	KC_O,	KC_E,	KC_UML,	KC_I,
-	KC_LSFT,	CTL_T(KC_SCLN),	KC_Q,	KC_J,	KC_K,	KC_X,	M(MACRO_ISEQUALS),
+	KC_ESC,	KC_F1,	KC_F2,	KC_F3,	KC_F4,	KC_F5,	KC_F11,
+	KC_TAB,	KC_QUOT,	KC_COMM,	KC_DOT,	KC_P,	KC_Y,	KC_FN6,
+	KC_EQL,	SFT_T(KC_A),	CTL_T(KC_O),	ALT_T(KC_E),	LT(SYMB_R,KC_U),	KC_I,
+	KC_LSFT,	KC_SCLN,	KC_Q,	KC_J,	KC_K,	KC_X,	M(MACRO_ISEQUALS),
 	KC_LCTRL,	KC_LALT,	CUT,	COPY,	PASTE,
 
-	KC_CAPS,	KC_RCTRL,
-	ALT_T(KC_APP),
-	MO(SYMB_L),	KC_SPC,	KC_PSCR,
+	KC_INS,	KC_CAPS,
+	KC_APP,
+	MO(SYMB_L),	KC_DELT,	KC_PSCR,
 
 	// right hand
-	KC_INS,	KC_6,	KC_7,	KC_8,	KC_9,	KC_0,	KC_BSLS,
+	KC_F12,	KC_F6,	KC_F7,	KC_F8,	KC_F9,	KC_F10,	KC_BSLS,
 	KC_BSPC,	KC_F,	KC_G,	KC_C,	KC_R,	KC_L,	KC_SLSH,
-		KC_D,	KC_HML,	KC_T,	KC_N,	KC_S,	SFT_T(KC_MINS),
-	KC_ENT,	KC_B,	KC_M,	KC_W,	KC_V,	CTL_T(KC_Z),	KC_RSFT,
-	KC_LEFT,	KC_UP,	KC_DOWN,	KC_RIGHT,	KC_RCTRL,
+		KC_D,	LT(SYMB_L,KC_H),	ALT_T(KC_T),	CTL_T(KC_N),	SFT_T(KC_S),	KC_MINS,
+	KC_ENT,	KC_B,	KC_M,	KC_W,	KC_V,	KC_Z,	KC_RSFT,
+	KC_LEFT,	KC_UP,	KC_DOWN,	KC_RALT,	KC_RCTRL,
 
-	KC_HOME,	KC_END,
+	KC_LGUI,	MEH_T(KC_NO),
 	KC_PGUP,
-	KC_PGDN,	MO(FKEY),	KC_SPC
+	KC_PGDN,	KC_ENTER,	KC_SPC
 ),
 
 [1] = KEYMAP(
@@ -108,11 +110,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ╭────────┬──────┬──────┬──────┬──────┬──────┬──────╮           ╭──────┬──────┬──────┬──────┬──────┬──────┬────────╮
  * │        │      │      │      │      │      │      │           │      │      │      │      │      │      │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┤           ├──────┼──────┼──────┼──────┼──────┼──────┼────────┤
- * │   |    │  !   │  @   │  {   │  }   │  +   │ TODO │           │      │      │      │      │      │      │        │
+ * │   *    │  !   │  @   │  {   │  }   │  +   │ TODO │           │      │      │      │      │      │      │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┤      │     1     │      ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │   `    │  :   │  $   │  (   │  ) • │  =   ├──────┤           ├──────┤      │      │      │      │      │        │
+ * │   %    │  :   │  $   │  (   │  ) • │  =   ├──────┤           ├──────┤      │      │      │      │      │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┤  ( ) │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │        │  #   │  ^   │  [   │  ]   │  ~   │      │           │      │      │      │      │      │      │        │
+ * │   `    │  #   │  ^   │  [   │  ]   │  ~   │      │           │      │      │      │      │      │      │        │
  * ╰─┬──────┼──────┼──────┼──────┼──────┼──────┴──────╯           ╰──────┴──────┼──────┼──────┼──────┼──────┼──────┬─╯
  *   │      │  £   │  €   │      │      │                                       │      │      │      │      │      │  
  *   ╰──────┴──────┴──────┴──────┴──────╯                                       ╰──────┴──────┴──────┴──────┴──────╯  
@@ -127,15 +129,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	// left hand
 	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 	KC_PIPE,	KC_EXLM,	KC_AT,	KC_LCBR,	KC_RCBR,	KC_PLUS,	M(MACRO_TODO),
-	KC_GRV,	KC_COLN,	KC_DLR,	KC_LPRN,	KC_RPRN,	KC_EQL,
-	KC_TRNS,	KC_HASH,	KC_CIRC,	KC_LBRC,	KC_RBRC,	KC_TILD,	M(MACRO_PARENTHESE),
+	KC_PERC,	KC_COLN,	KC_DLR,	KC_LPRN,	KC_RPRN,	KC_EQL,
+	KC_GRV,	KC_HASH,	KC_CIRC,	KC_LBRC,	KC_RBRC,	KC_TILD,	M(MACRO_PARENTHESE),
 	KC_TRNS,	M(POUND),	M(EURO),	KC_TRNS,	KC_TRNS,
 	KC_TRNS,	KC_TRNS,
 	KC_TRNS,
 	KC_TRNS,	KC_TRNS,	KC_TRNS,
 
 	// right hand
-	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+	KC_FN3,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 		KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
@@ -146,10 +148,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [2] = KEYMAP(
-/* Keymap 1: Symbol Layer (right hand)
+/* Keymap 2: Symbol Layer (right hand)
  *
  * ╭────────┬──────┬──────┬──────┬──────┬──────┬──────╮           ╭──────┬──────┬──────┬──────┬──────┬──────┬────────╮
- * │        │      │      │      │      │      │      │           │ QWER │      │      │      │      │      │        │
+ * │ RESET  │      │      │      │      │      │      │           │ QWER │      │      │      │      │      │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┤           ├──────┼──────┼──────┼──────┼──────┼──────┼────────┤
  * │        │      │      │      │      │      │      │           │      │      │ Home │  ▲   │  End │      │  PgUp  │
  * ├────────┼──────┼──────┼──────┼──────┼──────┤      │     2     │      ├──────┼──────┼──────┼──────┼──────┼────────┤
@@ -164,25 +166,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 ╭──────┼──────┼──────┤       ├──────┼────────┼──────╮
  *                                 │      │      │      │       │      │        │      │
  *                                 │      │      ├──────┤       ├──────┤        │      │
- *                                 │      │      │      │       │      │        │      │
+ *                                 │      │      │  VER │       │      │        │      │
  *                                 ╰──────┴──────┴──────╯       ╰──────┴────────┴──────╯
  */
 	// left hand
-	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+	RESET,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 	KC_TRNS,	KC_TRNS,
 	KC_TRNS,
-	KC_TRNS,	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	M(VRSN),
 
 	// right hand
-	KC_FN3,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
-	KC_TRNS,	KC_TRNS,	KC_HOME,	KC_UP,	KC_END,	KC_TRNS,	KC_PGUP,
-		KC_TRNS,	KC_LEFT,	KC_DOWN,	KC_RIGHT,	KC_TRNS,	KC_PGDN,
-	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
-	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_SLCK,
+	KC_FN3,	KC_NO,	KC_NO,	KC_NO,	KC_NO,	KC_NO,	KC_NO,
+	KC_NO,	KC_NO,	KC_HOME,	KC_UP,	KC_END,	KC_NO,	KC_PGUP,
+		KC_NO,	KC_LEFT,	KC_DOWN,	KC_RIGHT,	KC_NO,	KC_PGDN,
+	KC_NO,	KC_NO,	KC_NO,	KC_NO,	KC_NO,	KC_NO,	KC_NO,
+	KC_NO,	KC_NO,	KC_NO,	KC_NO,	KC_SLCK,
 	KC_TRNS,	KC_TRNS,
 	KC_TRNS,
 	KC_TRNS,	KC_TRNS,	KC_TRNS
@@ -224,9 +226,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	// right hand
 	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
-	KC_TRNS,	KC_TRNS,	KC_F1,	KC_F2,	KC_F3,	KC_F4,	KC_TRNS,
-	KC_TRNS,	KC_F5,	KC_F6,	KC_F7,	KC_F8,	KC_TRNS,
-	KC_TRNS,	KC_TRNS,	KC_F9,	KC_F10,	KC_F11,	KC_F12,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 
 	KC_TRNS,	KC_TRNS,
@@ -235,28 +237,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [4] = KEYMAP(
-/* Keymap 1: QWERTY layer (games)
+/* Keymap 4: QWERTY layer (games)
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |      |      |      |      |      |  L0  |           |      |      |      |      |      |      |        |
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |   Q  |   W  |   E  |   R  |   T  |      |           |      |   Y  |   U  |   I  |   O  |   P  |        |
  * |--------+------+------+------+------+------|      |     4     |      |------+------+------+------+------+--------|
  * |        |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |      |      |      |        |
+ * |        |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |      |      |                                       |      |      |      |      | RESET|
+ *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        |      |      |       |      |      |
+ *                                        |      |      |       |      |  L0  |
  *                                 ,------|------|------|       |------+--------+------.
  *                                 |      |      |      |       |      |        |      |
  *                                 |      |      |------|       |------|        |      |
- *                                 |      |      | VER  |       |      |        |      |
+ *                                 |      |      |      |       |      |        |      |
  *                                 `--------------------'       `----------------------'
  */
-       KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_FN3,
+       KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
        KC_TRNS,        KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,       KC_TRNS,
        KC_TRNS,        KC_A,       KC_S,       KC_D,       KC_F,       KC_G,
        KC_TRNS,        KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,       KC_TRNS,
@@ -264,18 +266,62 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
                        KC_TRNS,    KC_TRNS,
                                    KC_TRNS,
-       KC_TRNS,        KC_TRNS,    M(VRSN),
+       KC_TRNS,        KC_TRNS,    KC_TRNS,
 
     // right hand
        KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
        KC_TRNS,        KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,       KC_TRNS,
                        KC_H,       KC_J,       KC_K,       KC_L,       KC_SCLN,    KC_TRNS,
-       KC_TRNS,        KC_N,       KC_M,       KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
-                                   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    RESET,
-       KC_TRNS,        KC_TRNS,
+       KC_TRNS,        KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_SLSH,    KC_TRNS,
+                                   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+       KC_TRNS,        KC_FN3,
        KC_TRNS,
        KC_TRNS,        KC_TRNS,    KC_TRNS
-    )
+),
+[5] = KEYMAP(
+/* Keymap 2: Numb Pad keys (green) & shortcuts. Gui key (aka Super key). Meta key (aka Alt key).
+ * MEH:   Alt+Control+Shift
+ * HYPER: Alt+Control+Shift+Gui
+ * ╭────────┬──────┬──────┬──────┬──────┬──────┬──────╮           ╭──────┬──────┬──────┬──────┬──────┬──────┬────────╮
+ * │        │      │      │      │      │      │      │           │      │      │      │      │      │      │        │
+ * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┤           ├──────┼──────┼──────┼──────┼──────┼──────┼────────┤
+ * │        │      │      │      │      │      │      │           │      │      │   7  │  8   │  9   │      │        │
+ * ├────────┼──────┼──────┼──────┼──────┼──────┤      │     5     │      ├──────┼──────┼──────┼──────┼──────┼────────┤
+ * │        │      │      │      │     •│      ├──────┤           ├──────┤      │•  4  │  5   │  6   │      │        │
+ * ├────────┼──────┼──────┼──────┼──────┼──────┤      │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
+ * │        │      │      │      │      │      │      │           │      │      │   1  │  2   │  3   │      │        │
+ * ╰─┬──────┼──────┼──────┼──────┼──────┼──────┴──────╯           ╰──────┴──────┼──────┼──────┼──────┼──────┼──────┬─╯
+ *   │      │      │      │      │      │                                       │   0  │  .   │      │      │      │
+ *   ╰──────┴──────┴──────┴──────┴──────╯                                       ╰──────┴──────┴──────┴──────┴──────╯
+ *                                        ╭──────┬──────╮       ╭──────┬────────╮
+ *                                        │      │      │       │      │        │
+ *                                 ╭──────┼──────┼──────┤       ├──────┼────────┼──────╮
+ *                                 │      │      │      │       │      │        │      │
+ *                                 │      │      ├──────┤       ├──────┤        │      │
+ *                                 │      │      │      │       │      │        │      │
+ *                                 ╰──────┴──────┴──────╯       ╰──────┴────────┴──────╯
+ */
+	// left hand
+	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,
+	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_TRNS,
+
+	// right hand
+	KC_NO,	KC_NO,	KC_NO,	KC_NO,	KC_NO,	KC_NO,	KC_NO,
+	KC_NO,	KC_NO,	KC_7,	KC_8,	KC_9,	KC_NO,	KC_NO,
+	KC_NO,	KC_4,	KC_5,	KC_6,	KC_NO,	KC_NO,
+	KC_NO,	KC_NO,	KC_1,	KC_2,	KC_3,	KC_NO,	KC_NO,
+	KC_0,	KC_DOT,	KC_NO,	KC_NO,	KC_NO,
+
+	KC_TRNS,	KC_TRNS,
+	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_TRNS
+)
 };
 
 /* Empty template layer - copy and paste usage
@@ -306,6 +352,7 @@ const uint16_t PROGMEM fn_actions[] = {
     [3] = ACTION_LAYER_TAP_TOGGLE(QWER),	// FN3 - Toggle Layer QWER
     [4] = ACTION_LAYER_TAP_KEY(SYMB_L, KC_H),	// FN4 - Momentary Layer SYMB_L on H key
     [5] = ACTION_LAYER_TAP_KEY(SYMB_R, KC_U),	// FN5 - Momentary Layer SYMB_R on U key
+    [6] = ACTION_LAYER_TAP_TOGGLE(NUMB)	// FN6 - Momentary Layer or Toggle Layer to NUMB
 };
 
 
@@ -345,6 +392,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 			break;
 		case POUND:  // POUND = UC(0x00A3)
 			if (record->event.pressed) {
+				//return MACRO( I(15), D(RALT), T(L), T(MINUS), U(RALT), END );
 				return MACRO( D(LCTRL), D(LSHIFT), T(U), U(LSHIFT), U(LCTRL), T(0), T(0), T(A), T(3), T(ENTER), END);
 			}
 			break;
