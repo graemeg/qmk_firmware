@@ -65,8 +65,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ╭────────┬──────┬──────┬──────┬──────┬──────┬──────╮           ╭──────┬──────┬──────┬──────┬──────┬──────┬────────╮
  * │  Esc   │  F1  │  F2  │  F3  │  F4  │  F5  │  F11 │           │  F12 │  F6  │  F7  │  F8  │  F9  │  F10 │   \   |│
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┤           ├──────┼──────┼──────┼──────┼──────┼──────┼────────┤
- * │  Tab   │  '  "│  ,  <│  .  >│  P   │   Y  │ ~L5  │           │ BkSp │   F  │   G  │  C   │  R   │   L  │   /   ?│
- * ├────────┼──────┼──────┼──────┼──────┼──────┤ NUMB │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
+ * │  Tab   │  '  "│  ,  <│  .  >│  P   │   Y  │ Del  │           │ BkSp │   F  │   G  │  C   │  R   │   L  │   /   ?│
+ * ├────────┼──────┼──────┼──────┼──────┼──────┤      │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
  * │Shft =/+│  A  s│  O  c│  E  a│  U •²│   I  ├──────┤           ├──────┤   D  │ • H ¹│  T  a│  N  c│  S  s│   ─   _│
  * ├────────┼──────┼──────┼──────┼──────┼──────┤  :=  │           │Enter ├──────┼──────┼──────┼──────┼──────┼────────┤
  * │ LShift │  ;  :│   Q  │   J  │  K   │   X  │      │           │      │   B  │   M  │  W   │  V   │   Z  │ RShift │
@@ -77,20 +77,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        │ INS  │ CAPS │       │ GUI  │ Meh  │
  *                                 ╭──────┼──────┼──────┤       ├──────┼──────┼──────╮      Hyper = Meh+Gui
  *                                 │      │      │ App  │       │ PgUp │      │      │        Meh = Control+Alt+Shift
- *                                 │ ~L1  │ Del  ├──────┤       ├──────┤ Enter│ Space│        GUI = Super key
- *                                 │      │      │ PScr │       │ PgDn │      │      │        App = Menu key
+ *                                 │ ~L5  │ Tab  ├──────┤       ├──────┤ Enter│ Space│        GUI = Super key
+ *                                 │ Numb │      │ PScr │       │ PgDn │      │      │        App = Menu key
  *                                 ╰──────┴──────┴──────╯       ╰──────┴──────┴──────╯
  */
 	// left hand
 	KC_ESC,	KC_F1,	KC_F2,	KC_F3,	KC_F4,	KC_F5,	KC_F11,
-	KC_TAB,	KC_QUOT,	KC_COMM,	KC_DOT,	KC_P,	KC_Y,	KC_FN6,
+	KC_TAB,	KC_QUOT,	KC_COMM,	KC_DOT,	KC_P,	KC_Y,	KC_DELT,
 	KC_EQL,	SFT_T(KC_A),	CTL_T(KC_O),	ALT_T(KC_E),	LT(SYMB_R,KC_U),	KC_I,
 	KC_LSFT,	KC_SCLN,	KC_Q,	KC_J,	KC_K,	KC_X,	M(MACRO_ISEQUALS),
 	KC_LCTRL,	KC_LALT,	CUT,	COPY,	PASTE,
 
 	KC_INS,	KC_CAPS,
 	KC_APP,
-	MO(SYMB_L),	KC_DELT,	KC_PSCR,
+	MO(NUMB),	KC_TAB,	KC_PSCR,
 
 	// right hand
 	KC_F12,	KC_F6,	KC_F7,	KC_F8,	KC_F9,	KC_F10,	KC_BSLS,
@@ -128,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 	// left hand
 	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
-	KC_PIPE,	KC_EXLM,	KC_AT,	KC_LCBR,	KC_RCBR,	KC_PLUS,	M(MACRO_TODO),
+	KC_ASTR,	KC_EXLM,	KC_AT,	KC_LCBR,	KC_RCBR,	KC_PLUS,	M(MACRO_TODO),
 	KC_PERC,	KC_COLN,	KC_DLR,	KC_LPRN,	KC_RPRN,	KC_EQL,
 	KC_GRV,	KC_HASH,	KC_CIRC,	KC_LBRC,	KC_RBRC,	KC_TILD,	M(MACRO_PARENTHESE),
 	KC_TRNS,	M(POUND),	M(EURO),	KC_TRNS,	KC_TRNS,
