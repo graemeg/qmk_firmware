@@ -8,6 +8,7 @@
 #include "version.h"
 
 #define PREVENT_STUCK_MODIFIERS
+#define PERMISSIVE_HOLD  /*  https://github.com/qmk/qmk_firmware/pull/1359/  */
 
 #define BASE 0	// default layer
 #define SYMB_L 1	// symbols
@@ -19,7 +20,7 @@
 
 /*
   Author: Graeme Geldenhuys <graeme@geldenhuys.co.uk>
-  Ver 1.14   (2017-07-20)
+  Ver 1.15   (2017-07-28)
   Based on the default Dvorak keymap, and applied some
   tweaks from the TypeMatrix 2030 design. Some key locations are also
   designed to work well with my programming environment (FPC +Lazarus).
