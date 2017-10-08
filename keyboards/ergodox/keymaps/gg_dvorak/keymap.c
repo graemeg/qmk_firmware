@@ -58,6 +58,9 @@ enum {
 
 	You can use dual keys for modifiers too, as follows:
 	SFT_T(KC_O),	CTL_T(KC_E),	ALT_T(KC_U)
+
+	For layer switching options and explanation, see the following page:
+	   https://docs.qmk.fm/feature_common_shortcuts.html#switching-and-toggling-layers
 */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [0] = KEYMAP(
