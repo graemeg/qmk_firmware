@@ -114,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 1: Symbol Layer (left hand)
  *
  * ╭────────┬──────┬──────┬──────┬──────┬──────┬──────╮           ╭──────┬──────┬──────┬──────┬──────┬──────┬────────╮
- * │        │      │      │      │      │      │      │           │      │      │      │      │      │      │        │
+ * │        │      │      │  £   │  €   │      │      │           │      │      │      │      │      │      │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┤           ├──────┼──────┼──────┼──────┼──────┼──────┼────────┤
  * │   *    │  !   │  @   │  {   │  }   │  +   │ TODO │           │      │      │      │      │      │      │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┤      │     1     │      ├──────┼──────┼──────┼──────┼──────┼────────┤
@@ -122,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├────────┼──────┼──────┼──────┼──────┼──────┤  ( ) │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
  * │   `    │  #   │  ^   │  [   │  ]   │  ~   │      │           │      │      │      │      │      │      │        │
  * ╰─┬──────┼──────┼──────┼──────┼──────┼──────┴──────╯           ╰──────┴──────┼──────┼──────┼──────┼──────┼──────┬─╯
- *   │      │  £   │  €   │      │      │      (1)                              │      │      │      │      │      │  
+ *   │      │      │      │      │      │      (1)                              │      │      │      │      │      │  
  *   ╰──────┴──────┴──────┴──────┴──────╯                                       ╰──────┴──────┴──────┴──────┴──────╯  
  *                                        ╭──────┬──────╮       ╭──────┬────────╮
  *                                        │      │      │       │      │        │
@@ -133,11 +133,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 ╰──────┴──────┴──────╯       ╰──────┴────────┴──────╯
  */
 	// left hand
-	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_TRNS,	M(POUND),	M(EURO),	KC_TRNS,	KC_TRNS,
 	KC_ASTR,	KC_EXLM,	KC_AT,	KC_LCBR,	KC_RCBR,	KC_PLUS,	M(MACRO_TODO),
 	KC_PERC,	KC_AMPR,	KC_DLR,	KC_LPRN,	KC_RPRN,	KC_EQL,
 	KC_GRV,	KC_HASH,	KC_CIRC,	KC_LBRC,	KC_RBRC,	KC_TILD,	M(MACRO_PARENTHESE),
-	KC_TRNS,	M(POUND),	M(EURO),	KC_TRNS,	KC_TRNS,
+	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,	KC_TRNS,
 	KC_TRNS,	KC_TRNS,
 	KC_TRNS,
 	KC_TRNS,	KC_TRNS,	KC_TRNS,
