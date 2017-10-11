@@ -60,11 +60,13 @@ enum {
 	SFT_T(KC_O),	CTL_T(KC_E),	ALT_T(KC_U)
 
 	For layer switching options and explanation, see the following page:
-	   https://docs.qmk.fm/feature_common_shortcuts.html#switching-and-toggling-layers
+	   https://docs.qmk.fm/feature_common_shortcuts.html#switching-and-toggling-layer
+
+	I also have Space-Cadet Shift keys enabled and disabled command mode via the Makefile.
 */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [0] = KEYMAP(
-/* Keymap 0: Basic layer
+/* Keymap 0: Basic layer                                                  Version: 1.17
  *
  * ╭────────┬──────┬──────┬──────┬──────┬──────┬──────╮           ╭──────┬──────┬──────┬──────┬──────┬──────┬────────╮
  * │  Esc   │  F1  │  F2  │  F3  │  F4  │  F5  │  F11 │           │  F12 │  F6  │  F7  │  F8  │  F9  │  F10 │   \   |│
@@ -73,9 +75,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├────────┼──────┼──────┼──────┼──────┼──────┤      │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
  * │ LShift │  A  s│  O  c│  E  a│  U •²│   I  ├──────┤           ├──────┤   D  │ • H ¹│  T  a│  N  c│  S  s│   ─   _│
  * ├────────┼──────┼──────┼──────┼──────┼──────┤  :=  │           │Enter ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │ LShift │  ;  :│   Q  │   J  │  K   │   X  │      │           │      │   B  │   M  │  W   │  V   │   Z  │ RShift │
+ * │ (   ⇧  │  ;  :│   Q  │   J  │  K   │   X  │      │           │      │   B  │   M  │  W   │  V   │  Z   │  )   ⇧ │
  * ╰─┬──────┼──────┼──────┼──────┼──────┼──────┴──────╯           ╰──────┴──────┼──────┼──────┼──────┼──────┼──────┬─╯
- *   │LCtrl │ LAlt │ CUT  │ COPY │ PASTE│                                       │ QWER │   ▲  │   ▼  │ RAlt │ RCtrl│
+ *   │LCtrl │ LAlt │ CUT  │ COPY │ PASTE│                                       │   ◀  │   ▲  │   ▼  │  ▶   │ RCtrl│
  *   ╰──────┴──────┴──────┴──────┴──────╯                                       ╰──────┴──────┴──────┴──────┴──────╯
  *                                        ╭──────┬──────╮       ╭──────┬──────╮
  *                                        │ INS  │ CAPS │       │ GUI  │ Meh  │
@@ -89,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	KC_ESC,	KC_F1,	KC_F2,	KC_F3,	KC_F4,	KC_F5,	KC_F11,
 	KC_TAB,	KC_QUOT,	KC_COMM,	KC_DOT,	KC_P,	KC_Y,	KC_DELT,
 	OSM(MOD_LSFT),	SFT_T(KC_A),	CTL_T(KC_O),	ALT_T(KC_E),	LT(SYMB_R,KC_U),	KC_I,
-	OSM(MOD_LSFT),	KC_SCLN,	KC_Q,	KC_J,	KC_K,	KC_X,	M(MACRO_ISEQUALS),
+	KC_LSPO,	KC_SCLN,	KC_Q,	KC_J,	KC_K,	KC_X,	M(MACRO_ISEQUALS),
 	KC_LCTRL,	KC_LALT,	CUT,	COPY,	PASTE,
 
 	KC_INS,	KC_CAPS,
@@ -100,8 +102,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	KC_F12,	KC_F6,	KC_F7,	KC_F8,	KC_F9,	KC_F10,	KC_BSLS,
 	KC_BSPC,	KC_F,	KC_G,	KC_C,	KC_R,	KC_L,	KC_SLSH,
 		KC_D,	LT(SYMB_L,KC_H),	ALT_T(KC_T),	CTL_T(KC_N),	SFT_T(KC_S),	KC_MINS,
-	KC_ENT,	KC_B,	KC_M,	KC_W,	KC_V,	KC_Z,	OSM(MOD_RSFT),
-	TO(4),	KC_UP,	KC_DOWN,	ALGR_T(KC_RALT),	KC_RCTRL,
+	KC_ENT,	KC_B,	KC_M,	KC_W,	KC_V,	KC_Z,	KC_RSPC,
+	KC_LEFT,	KC_UP,	KC_DOWN,	KC_RIGHT,	KC_RCTRL,
 
 	KC_LGUI,	MEH_T(KC_NO),
 	KC_PGUP,
