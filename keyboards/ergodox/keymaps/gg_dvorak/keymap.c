@@ -69,28 +69,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer                                                  Version: 1.17
  *
  * ╭────────┬──────┬──────┬──────┬──────┬──────┬──────╮           ╭──────┬──────┬──────┬──────┬──────┬──────┬────────╮
- * │  Esc   │  F1  │  F2  │  F3  │  F4  │  F5  │  F11 │           │  F12 │  F6  │  F7  │  F8  │  F9  │  F10 │   \   |│
+ * │  Esc   │  1  !│  2  @│  3  #│  4  $│   5 %│  F11 │           │  F12 │   6 ^│   7 &│  8  *│  9  (│  0  )│   \   |│
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┤           ├──────┼──────┼──────┼──────┼──────┼──────┼────────┤
- * │  Tab   │  '  "│  ,  <│  .  >│  P   │   Y  │ Del  │           │ BkSp │   F  │   G  │  C   │  R   │   L  │   /   ?│
+ * │  Tab   │  '  "│  ,  <│  .  >│  P   │   Y  │ Del  │           │ BkSp │   F  │   G  │  C   │  R   │  L   │   /   ?│
  * ├────────┼──────┼──────┼──────┼──────┼──────┤      │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │ LShift │  A  s│  O  c│  E  a│  U •²│   I  ├──────┤           ├──────┤   D  │ • H ¹│  T  a│  N  c│  S  s│   ─   _│
+ * │        │  A   │  O   │  E   │  U •²│   I  ├──────┤           ├──────┤   D  │ • H ¹│  T   │  N   │  S   │   ─   _│
  * ├────────┼──────┼──────┼──────┼──────┼──────┤  :=  │           │Enter ├──────┼──────┼──────┼──────┼──────┼────────┤
  * │ (   ⇧  │  ;  :│   Q  │   J  │  K   │   X  │      │           │      │   B  │   M  │  W   │  V   │  Z   │  )   ⇧ │
  * ╰─┬──────┼──────┼──────┼──────┼──────┼──────┴──────╯           ╰──────┴──────┼──────┼──────┼──────┼──────┼──────┬─╯
  *   │LCtrl │ LAlt │ CUT  │ COPY │ PASTE│                                       │   ◀  │   ▲  │   ▼  │  ▶   │ RCtrl│
  *   ╰──────┴──────┴──────┴──────┴──────╯                                       ╰──────┴──────┴──────┴──────┴──────╯
  *                                        ╭──────┬──────╮       ╭──────┬──────╮
- *                                        │ INS  │ CAPS │       │ GUI  │ Meh  │
+ *                                        │ INS  │  ⇪   │       │ GUI  │ QWER │
  *                                 ╭──────┼──────┼──────┤       ├──────┼──────┼──────╮      Hyper = Meh+Gui
  *                                 │      │      │ App  │       │ PgUp │      │      │        Meh = Control+Alt+Shift
- *                                 │ ~L5  │ Tab  ├──────┤       ├──────┤ Enter│ Space│        GUI = Super or Win key
- *                                 │ Numb │      │ PScr │       │ PgDn │      │      │        App = Menu key
+ *                                 │ ~L5  │ Tab  ├──────┤       ├──────┤ FKEY │ Space│        GUI = Super or Win key
+ *                                 │      │      │ PScr │       │ PgDn │  L3  │      │        App = Menu key
  *                                 ╰──────┴──────┴──────╯       ╰──────┴──────┴──────╯
  */
 	// left hand
 	KC_ESC,	KC_F1,	KC_F2,	KC_F3,	KC_F4,	KC_F5,	KC_F11,
 	KC_TAB,	KC_QUOT,	KC_COMM,	KC_DOT,	KC_P,	KC_Y,	KC_DELT,
-	OSM(MOD_LSFT),	SFT_T(KC_A),	CTL_T(KC_O),	ALT_T(KC_E),	LT(SYMB_R,KC_U),	KC_I,
+	KC_NO,	KC_A,	KC_O,	KC_E,	LT(SYMB_R,KC_U),	KC_I,
 	KC_LSPO,	KC_SCLN,	KC_Q,	KC_J,	KC_K,	KC_X,	M(MACRO_ISEQUALS),
 	KC_LCTRL,	KC_LALT,	CUT,	COPY,	PASTE,
 
@@ -101,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	// right hand
 	KC_F12,	KC_F6,	KC_F7,	KC_F8,	KC_F9,	KC_F10,	KC_BSLS,
 	KC_BSPC,	KC_F,	KC_G,	KC_C,	KC_R,	KC_L,	KC_SLSH,
-		KC_D,	LT(SYMB_L,KC_H),	ALT_T(KC_T),	CTL_T(KC_N),	SFT_T(KC_S),	KC_MINS,
+		KC_D,	LT(SYMB_L,KC_H),	KC_T,	KC_N,	KC_S,	KC_MINS,
 	KC_ENT,	KC_B,	KC_M,	KC_W,	KC_V,	KC_Z,	KC_RSPC,
 	KC_LEFT,	KC_UP,	KC_DOWN,	KC_RIGHT,	KC_RCTRL,
 
